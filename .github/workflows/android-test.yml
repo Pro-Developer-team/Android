@@ -27,7 +27,7 @@ jobs:
       - name: Prepare a branch, and file
         run: |
           echo "Make a branch"
-          BRANCH=welcome-workflow
+          BRANCH=main
           git checkout -b $BRANCH
 
           echo "Create Android project structure"
