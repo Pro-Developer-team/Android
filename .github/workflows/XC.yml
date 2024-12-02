@@ -69,9 +69,13 @@ jobs:
           git config user.name Branch create
           git commit --allow-empty --message="Create an empty commit"
 
+          echo "git"
+          git config --global --edit
+          git commit --amend --reset-author
+          
           echo "Push"
           git push --set-upstream origin $BRANCH
-          git commit --amend --reset-author
+          
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
