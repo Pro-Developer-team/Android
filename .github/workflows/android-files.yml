@@ -1,0 +1,79 @@
+name: Step 0, Welcome
+
+# This step triggers after the learner creates a new repository from the template.
+# This workflow updates from step 0 to step 1.
+
+# This will run every time we create push a commit to `main`.
+# Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+# Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+permissions:
+  # Need `contents: read` to checkout the repository.
+  # Need `contents: write` to update the step metadata.
+  contents: write
+
+      - name: Prepare a branch, and file
+        run: |
+          
+jobs:
+  # Get the current step to only run the main job when the learner is on the same step.
+  insert-files:
+    name: Check current step number
+    run: |
+          echo "Make a branch"
+          BRANCH=main-1
+          git checkout -b $BRANCH
+
+          echo "Create Android project structure"
+          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp
+          mkdir -p MyAndroidApp/app/src/main/res/layout
+          mkdir -p MyAndroidApp/app/src/main/res/values
+          
+          # Additional directories
+          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp/ui
+          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp/data
+          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp/model
+          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp/utils
+          mkdir -p MyAndroidApp/app/src/main/res/drawable
+          mkdir -p MyAndroidApp/app/src/main/res/menu
+          
+          # Create empty files for Android components
+          touch MyAndroidApp/app/src/main/AndroidManifest.xml
+          touch MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java
+          touch MyAndroidApp/app/src/main/java/com/example/myandroidapp/ui/HomeFragment.java
+          touch MyAndroidApp/app/src/main/java/com/example/myandroidapp/ui/SettingsFragment.java
+          touch MyAndroidApp/app/src/main/java/com/example/myandroidapp/data/DataRepository.java
+          touch MyAndroidApp/app/src/main/java/com/example/myandroidapp/model/User.java
+          touch MyAndroidApp/app/src/main/java/com/example /myandroidapp/utils/Constants.java
+          touch MyAndroidApp/app/src/main/res/layout/activity_main.xml
+          touch MyAndroidApp/app/src/main/res/layout/fragment_home.xml
+          touch MyAndroidApp/app/src/main/res/layout/fragment_settings.xml
+          touch MyAndroidApp/app/src/main/res/values/strings.xml
+          touch MyAndroidApp/app/src/main/res/values/colors.xml
+          touch MyAndroidApp/app/src/main/res/values/styles.xml
+          touch MyAndroidApp/app/src/main/res/menu/menu_main.xml
+
+          echo "Make a commit"
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add MyAndroidApp/
+          git commit -m "Create extended Android project structure with additional files"
+
+          echo "Push"
+          git push --set-upstream origin $BRANCH
+
+          echo "Restore main"
+          git checkout main
+
+          echo "Merge the new branch into main"
+          git merge $BRANCH
+
+          echo "Push the merged changes to main"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
