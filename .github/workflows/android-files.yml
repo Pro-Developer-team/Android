@@ -24,6 +24,19 @@ jobs:
           BRANCH=main-1
           git checkout -b $BRANCH
 
+      - name: Create or modify files
+        run: |
+          echo "Creating or modifying files..."
+          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp
+          
+          # Check if MainActivity.java exists; if not, create it
+          if [ ! -f MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java ]; then
+            echo "public class MainActivity {}" > MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java
+            echo "MainActivity.java created."
+          else
+            echo "MainActivity.java already exists, skipping creation."
+          fi
+          
           echo "Create Android project structure"
           mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp
           mkdir -p MyAndroidApp/app/src/main/res/layout
@@ -82,7 +95,16 @@ jobs:
           git add AndroidSettings/
           git commit -m "Create extended Android project structure with additional files"
 
+      - name: Create Pull Request
+        run: |
+          PR_TITLE="Automated PR: Update Android project structure"
+          gh pr create --title "$PR_TITLE" --body "This PR was created automatically by GitHub Actions." --base main --head main || echo "No pull request created."
 
+      - name: Enable Auto-Merge
+        run: |
+          gh pr merge --auto --delete-branch --squash "$PR_TITLE" || echo "No pull request to merge."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
 
