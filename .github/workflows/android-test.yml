@@ -27,7 +27,7 @@ jobs:
       - name: Prepare a branch, and file
         run: |
           echo "Make a branch"
-          BRANCH=main
+          BRANCH=main-1
           git checkout -b $BRANCH
 
           echo "Create Android project structure"
@@ -50,9 +50,13 @@ jobs:
           echo "Push"
           git push --set-upstream origin $BRANCH
 
+          echo "Merge the new branch into main"
+          git merge $BRANCH
+
+          echo "Push the merged changes to main"
+          git push origin main
+          
           echo "Restore main"
           git checkout main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # In README.md, switch step 0 for step 1.
