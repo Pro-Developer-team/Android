@@ -71,6 +71,8 @@ jobs:
 
           echo "Push"
           git push --set-upstream origin $BRANCH
+          git commit --amend --reset-author
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
