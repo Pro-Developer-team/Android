@@ -13,12 +13,9 @@ on:
 
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:
-  # Need `contents: read` to checkout the repository.
-  # Need `contents: write` to update the step metadata.
   contents: write
           
 jobs:
-  # Get the current step to only run the main job when the learner is on the same step.
   insert-files:
     name: Inport files
     run: |
