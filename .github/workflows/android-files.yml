@@ -70,12 +70,6 @@ jobs:
             fi
           done          
 
-          echo "Make a commit"
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-          git add MyAndroidApp/
-          git commit -m "Create extended Android project structure with additional files"
-
           echo "Push"
           git push --set-upstream origin $BRANCH
 
@@ -87,17 +81,6 @@ jobs:
 
           echo "Push the merged changes to main"
           git push origin main
-
-      - name: Make commits
-        run: |
-          echo "Make a commit"
-          git config user.name github-actions
-          git config user.email github-actions[bot]@users.noreply.github.com
-          git add MyAndroidApp/
-          git add AndroidPreferences/
-          git add Configure/
-          git add AndroidSettings/
-          git commit -m "Create extended Android project structure with additional files"
 
       - name: Create Pull Request
         run: |
