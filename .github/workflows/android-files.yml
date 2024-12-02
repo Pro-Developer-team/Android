@@ -11,6 +11,7 @@ permissions:
   contents: write
   packages: write
   deployments: write
+  pull-requests: write
           
 jobs:
   Import-files:
@@ -82,6 +83,9 @@ jobs:
           echo "Push the merged changes to main"
           git push origin main
 
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh
+        
       - name: Create Pull Request
         run: |
           PR_TITLE="Automated PR: Update Android project structure"
