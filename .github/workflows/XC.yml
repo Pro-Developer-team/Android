@@ -66,13 +66,9 @@ jobs:
           git checkout -b $BRANCH
           
           echo "Make a commit"
-          git config user.name Branch create
+          git config user.name Branch create [bot]
           git commit --allow-empty --message="Create an empty commit"
 
-          echo "git"
-          git config --global --edit --allow-empty
-          git commit --amend --reset-author --allow-empty
-          
           echo "Push"
           git push --set-upstream origin $BRANCH
           
