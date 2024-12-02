@@ -18,12 +18,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Importing files from Android
-        run: |
-          echo "Make a branch"
-          BRANCH=main-1
-          git checkout -b $BRANCH
-
       - name: Create or modify files
         run: |
           echo "Creating or modifying files..."
