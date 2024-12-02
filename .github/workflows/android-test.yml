@@ -1,4 +1,4 @@
-name: Android
+name: Skip if files exsist
 
 # This step triggers after the learner creates a new repository from the template.
 # This workflow updates from step 0 to step 1.
@@ -42,17 +42,3 @@ jobs:
           else
             echo "MainActivity.java already exists, skipping creation."
           fi
-
-          echo "Push"
-          git push --set-upstream origin $BRANCH
-
-          echo "Merge the new branch into main"
-          git merge $BRANCH
-
-          echo "Push the merged changes to main"
-          git push origin main
-          
-          echo "Restore main"
-          git checkout main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
