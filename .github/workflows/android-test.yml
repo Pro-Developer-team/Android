@@ -60,41 +60,12 @@ jobs:
 
           # Create a basic MainActivity.java
           cat <<EOL > MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java
-package com.example.myandroidapp;
-
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-}
-EOL
 
           # Create a basic layout file
           cat <<EOL > MyAndroidApp/app/src/main/res/layout/activity_main.xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to My Android App!" />
-</LinearLayout>
-EOL
 
           # Create a basic strings.xml
           cat <<EOL > MyAndroidApp/app/src/main/res/values/strings.xml
-<resources>
-    <string name="app_name">My Android App</string>
-</resources>
-EOL
 
           echo "Make a commit"
           git config user.name github-actions[bot]
