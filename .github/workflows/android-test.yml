@@ -14,8 +14,20 @@ permissions:
   contents: write
 
 jobs:
-  Android:
-    name: Android
+  get_current_step:
+    name: Check current step number
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - id: get_step
+        run: |
+          echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
+    outputs:
+      current_step: ${{ steps.get_step.outputs.current_step }}
+
+  on_start:
+    name: On start
     needs: get_current_step
     runs-on: ubuntu-latest
 
@@ -28,8 +40,7 @@ jobs:
       - name: Prepare a branch, and file
         run: |
           echo "Make sure we are on step 0"
-          if [ "$(cat .github/steps/-step.txt)" != 0 ]
-          then
+          if [ "$(cat .github/steps/-step.txt)" != 0 ]; then
             echo "Current step is not 0"
             exit 0
           fi
@@ -43,70 +54,17 @@ jobs:
           mkdir -p MyAndroidApp/app/src/main/res/layout
           mkdir -p MyAndroidApp/app/src/main/res/values
 
-          # Create a basic AndroidManifest.xml
-          cat <<EOL > MyAndroidApp/app/src/main/AndroidManifest.xml
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myandroidapp">
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.MyAndroidApp">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
-</manifest>
-EOL
-
-          # Create a basic MainActivity.java
-          cat <<EOL > MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java
-package com.example.myandroidapp;
-
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-}
-EOL
-
-          # Create a basic layout file
-          cat <<EOL > MyAndroidApp/app/src/main/res/layout/activity_main.xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to My Android App!" />
-</LinearLayout>
-EOL
-
-          # Create a basic strings.xml
-          cat <<EOL > MyAndroidApp/app/src/main/res/values/strings.xml
-<resources>
-    <string name="app_name">My Android App</string>
-</resources>
-EOL
+          # Create empty files for Android components
+          touch MyAndroidApp/app/src/main/AndroidManifest.xml
+          touch MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java
+          touch MyAndroidApp/app/src/main/res/layout/activity_main.xml
+          touch MyAndroidApp/app/src/main/res/values/strings.xml
 
           echo "Make a commit"
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
           git add MyAndroidApp/
-          git commit -m "Create basic Android project structure"
+          git commit -m "Create basic Android project structure with empty files"
 
           echo "Push"
           git push --set-upstream origin $BRANCH
@@ -116,4 +74,7 @@ EOL
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # In README.md, switch
+      # In README.md, switch step 0 for step 1.
+      - name: Update to step 1
+        run: |
+          # Add your command to update README or perform other actions here.
