@@ -30,6 +30,19 @@ jobs:
           BRANCH=main-1
           git checkout -b $BRANCH
 
+      - name: Create or modify files
+        run: |
+          echo "Creating or modifying files..."
+          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp
+          
+          # Check if MainActivity.java exists; if not, create it
+          if [ ! -f MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java ]; then
+            echo "public class MainActivity {}" > MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java
+            echo "MainActivity.java created."
+          else
+            echo "MainActivity.java already exists, skipping creation."
+          fi
+          
           echo "Create Android project structure"
           mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp
           mkdir -p MyAndroidApp/app/src/main/res/layout
