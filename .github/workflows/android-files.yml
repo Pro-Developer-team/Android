@@ -16,7 +16,7 @@ permissions:
   contents: write
           
 jobs:
-  insert-files:
+  insertfiles:
     name: Inport files
     run: |
           echo "Make a branch"
