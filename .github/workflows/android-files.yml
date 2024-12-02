@@ -1,24 +1,25 @@
 name: Step 0, Welcome
 
-# This step triggers after the learner creates a new repository from the template.
-# This workflow updates from step 0 to step 1.
-
-# This will run every time we create push a commit to `main`.
-# Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
+# This step Imports the files from Android.
 on:
   workflow_dispatch:
   push:
     branches:
       - main
-
-# Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+      
 permissions:
   contents: write
+  packages: write
+  deployments: write
           
 jobs:
-  insertfiles:
-    name: Inport files
-    run: |
+  Import-files:
+    name: Import files from Android
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Importing files from Android
+        run: |
           echo "Make a branch"
           BRANCH=main-1
           git checkout -b $BRANCH
@@ -69,5 +70,21 @@ jobs:
 
           echo "Push the merged changes to main"
           git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Make commits
+        run: |
+          echo "Make a commit"
+          git config user.name github-actions
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add MyAndroidApp/
+          git add AndroidPreferences/
+          git add Configure/
+          git add AndroidSettings/
+          git commit -m "Create extended Android project structure with additional files"
+
+
+
+
+
+
+      
