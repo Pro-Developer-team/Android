@@ -67,14 +67,10 @@ jobs:
           
           echo "Make a commit"
           git config user.name Branch create
-          git config user.email github-actions[bot]@users.noreply.github.com
           git commit --allow-empty --message="Create an empty commit"
 
           echo "Push"
           git push --set-upstream origin $BRANCH
-
-          echo "Restore main"
-          git checkout main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
