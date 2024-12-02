@@ -31,34 +31,41 @@ jobs:
             echo "MainActivity.java already exists, skipping creation."
           fi
           
-          echo "Create Android project structure"
-          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp
-          mkdir -p MyAndroidApp/app/src/main/res/layout
-          mkdir -p MyAndroidApp/app/src/main/res/values
+          for dir in MyAndroidApp/app/src/main/java/com/example/myandroidapp \
+                     MyAndroidApp/app/src/main/res/layout \
+                     MyAndroidApp/app/src/main/res/values \
+                     MyAndroidApp/app/src/main/java/com/example/myandroidapp/ui \
+                     MyAndroidApp/app/src/main/java/com/example/myandroidapp/data \
+                     MyAndroidApp/app/src/main/java/com/example/myandroidapp/model \
+                     MyAndroidApp/app/src/main/java/com/example/myandroidapp/utils \
+                     MyAndroidApp/app/src/main/res/drawable \
+                     MyAndroidApp/app/src/main/res/menu; do
+            mkdir -p "$dir"
+            echo "$dir created or already exists."
+          done
           
-          # Additional directories
-          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp/ui
-          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp/data
-          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp/model
-          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp/utils
-          mkdir -p MyAndroidApp/app/src/main/res/drawable
-          mkdir -p MyAndroidApp/app/src/main/res/menu
-          
-          # Create empty files for Android components
-          touch MyAndroidApp/app/src/main/AndroidManifest.xml
-          touch MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java
-          touch MyAndroidApp/app/src/main/java/com/example/myandroidapp/ui/HomeFragment.java
-          touch MyAndroidApp/app/src/main/java/com/example/myandroidapp/ui/SettingsFragment.java
-          touch MyAndroidApp/app/src/main/java/com/example/myandroidapp/data/DataRepository.java
-          touch MyAndroidApp/app/src/main/java/com/example/myandroidapp/model/User.java
-          touch MyAndroidApp/app/src/main/java/com/example /myandroidapp/utils/Constants.java
-          touch MyAndroidApp/app/src/main/res/layout/activity_main.xml
-          touch MyAndroidApp/app/src/main/res/layout/fragment_home.xml
-          touch MyAndroidApp/app/src/main/res/layout/fragment_settings.xml
-          touch MyAndroidApp/app/src/main/res/values/strings.xml
-          touch MyAndroidApp/app/src/main/res/values/colors.xml
-          touch MyAndroidApp/app/src/main/res/values/styles.xml
-          touch MyAndroidApp/app/src/main/res/menu/menu_main.xml
+          # Create files if they don't exist
+          for file in MyAndroidApp/app/src/main/AndroidManifest.xml \
+                      MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java \
+                      MyAndroidApp/app/src/main/java/com/example/myandroidapp/ui/HomeFragment.java \
+                      MyAndroidApp/app/src/main/java/com/example/myandroidapp/ui/SettingsFragment.java \
+                      MyAndroidApp/app/src/main/java/com/example/myandroidapp/data/DataRepository.java \
+                      MyAndroidApp/app/src/main/java/com/example/myandroidapp/model/User.java \
+                      MyAndroidApp/app/src/main/java/com/example/myandroidapp/utils/Constants.java \
+                      MyAndroidApp/app/src/main/res/layout/activity_main.xml \
+                      MyAndroidApp/app/src/main/res/layout/fragment_home.xml \
+                      MyAndroidApp/app/src/main/res/layout/fragment_settings.xml \
+                      MyAndroidApp/app/src/main/res/values/strings.xml \
+                      MyAndroidApp/app/src/main/res/values/colors.xml \
+                      MyAndroidApp/app/src/main/res/values/styles.xml \
+                      MyAndroidApp/app/src/main/res/menu/menu_main.xml; do
+            if [ ! -f "$file" ]; then
+              touch "$file"
+              echo "$file created."
+            else
+              echo "$file already exists, skipping creation."
+            fi
+          done          
 
           echo "Make a commit"
           git config user.name github-actions[bot]
