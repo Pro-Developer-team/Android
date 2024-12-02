@@ -53,13 +53,6 @@ jobs:
       # Make a branch, file, and commit for the learner.
       - name: Prepare a branch, and file
         run: |
-          echo "Make sure we are on step 0"
-          if [ "$(cat .github/steps/-step.txt)" != 0 ]
-          then
-            echo "Current step is not 0"
-            exit 0
-          fi
-
           echo "Make a branch"
           BRANCH=main2
           git checkout -b $BRANCH
