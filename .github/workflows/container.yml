@@ -19,8 +19,8 @@ jobs:
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          --health-timeout 2s
+          --health-retries 7
 
     steps:
       # Downloads a copy of the code in your repository before running CI tests
@@ -29,6 +29,10 @@ jobs:
 
       # Performs a clean installation of all dependencies in the `package.json` file
       # For more information, see https://docs.npmjs.com/cli/ci.html
+
+      - name: Install a package-lock.json file
+        run: npm install
+        
       - name: Install dependencies
         run: npm ci
 
