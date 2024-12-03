@@ -71,9 +71,16 @@ jobs:
             fi
           done          
 
+          # Create le.java file
+          echo "public class le {}" > MyAndroidApp/app/src/main/java/com/example/myandroidapp/le.java
+          echo "le.java created."
+
           # Download additional files from the specified GitHub repository
           echo "Downloading additional files from https://github.com/android/nowinandroid/tree/main/core"
           
+          # Create the directory for downloaded files
+          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp/core
+
           # List of files to download
           files=(
             "core/ExampleFile.java"
@@ -94,7 +101,7 @@ jobs:
           git push origin main
 
       - name: Install GitHub CLI
-        run: sudo apt-get install gh
+        run: sudo apt-get install gh -
         
       - name: Create Pull Request
         run: |
