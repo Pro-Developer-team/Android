@@ -1,0 +1,18 @@
+<resources>
+    <icon>
+        <path>resources/icons/weather.ico</path>
+        <description>Weather Icon</description>
+    </icon>
+    <images>
+        <image>
+            <path>resources/images/weather_background.jpg</path>
+            <description>Background for Weather App</description>
+        </image>
+    </images>
+    <sounds>
+        <sound>
+            <path>resources/sounds/weather_alert.mp3</path>
+            <description>Weather Alert Sound</description>
+        </sound>
+    </sounds>
+</resources>
