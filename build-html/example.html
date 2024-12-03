@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI Build Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+        }
+        .success {
+            background-color: #4CAF50;
+        }
+        .failure {
+            background-color: #F44336;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CI Build Report</h1>
+
+    <div class="status success">
+        Build Status: <strong>Success</strong>
+    </div>
+
+    <h2>Build Details</h2>
+    <table>
+        <tr>
+            <th>Build Number</th>
+            <th>Commit ID</th>
+            <th>Branch</th>
+            <th>Build Time</th>
+        </tr>
+        <tr>
+            <td>123</td>
+            <td>abc123def</td>
+            <td>main</td>
+            <td>10 minutes</td>
+        </tr>
+    </table>
+
+    <h2>Test Results</h2>
+    <table>
+        <tr>
+            <th>Test Name</th>
+            <th>Status</th>
+            <th>Execution Time</th>
+        </tr>
+        <tr>
+            <td>TestLogin</td>
+            <td class="success">Passed</td>
+            <td>2 seconds</td>
+        </tr>
+        <tr>
+            <td>TestPayment</td>
+            <td class="failure">Failed</td>
+            <td>1 second</td>
+        </tr>
+        <tr>
+            <td>TestCheckout</td>
+            <td class="success">Passed</td>
+            <td>3 seconds</td>
+        </tr>
+    </table>
+
+    <h2>Deployment Status</h2>
+    <div class="status success">
+        Deployment Status: <strong>Deployed Successfully</strong>
+    </div>
+
+    <h2>Next Steps</h2>
+    <ul>
+        <li>Investigate failed tests.</li>
+        <li>Prepare for the next release.</li>
+    </ul>
+
+</body>
+</html>
