@@ -1,0 +1,18 @@
+<resources>
+    <icon>
+        <path>resources/icons/music_player.ico</path>
+        <description>Music Player Icon</description>
+    </icon>
+    <images>
+        <image>
+            <path>resources/images/music_background.jpg</path>
+            <description>Background for Music Player</description>
+        </image>
+    </images>
+    <sounds>
+        <sound>
+            <path>resources/sounds/play.wav</path>
+            <description>Play Sound Effect</description>
+        </sound>
+    </sounds>
+</resources>
