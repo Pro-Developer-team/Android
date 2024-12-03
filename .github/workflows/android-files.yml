@@ -95,6 +95,10 @@ jobs:
             echo "$file downloaded."
           done
 
+          echo "Adding files"
+          git add MyAndroidApp/
+          git add core/
+          
           echo "Configuring Git user"
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
@@ -122,3 +126,25 @@ jobs:
           gh pr merge --auto --delete-branch --squash "$PR_TITLE" || echo "No pull request to merge. Ensure that you have a PR open and ready."
         env:
           GH_TOKEN: ${{ github.token }}
+
+
+  commit-changes:
+    name: Commit changes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure Git
+        run: |
+          echo "Configuring Git user"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+      - name: Add changes
+        run: |
+          echo "Adding changes"
+          git add MyAndroidApp/ # Ensure that you are adding the correct directory
+
+      - name: Commit changes
+        run: |
+          echo "Committing changes"
+          git commit -m "Add files from nowinandroid core" || echo "No changes to commit"
