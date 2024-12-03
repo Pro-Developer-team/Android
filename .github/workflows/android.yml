@@ -97,7 +97,7 @@ jobs:
         packages: yasm nasm
 
     - name: run-vcpkg
-      uses: lukka/run-vcpkg@v7.4
+      uses: lukka/run-vcpkg@v11.5
       with:
         # Indicates whether to only setup vcpkg (i.e. installing it and setting the environment variables VCPKG_ROOT, RUNVCPK_VCPKG_ROOT), without installing any port.
         #setupOnly: # optional
