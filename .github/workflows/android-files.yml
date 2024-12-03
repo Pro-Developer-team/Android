@@ -46,6 +46,7 @@ jobs:
                      MyAndroidApp/app/src/main/res/menu; do
             mkdir -p "$dir"
             echo "$dir created or already exists."
+          done
 
           # Create files if they don't exist
           for file in MyAndroidApp/app/src/main/AndroidManifest.xml \
@@ -77,19 +78,18 @@ jobs:
           # Download additional files from the specified GitHub repository
           echo "Downloading additional files from https://github.com/android/nowinandroid/tree/main/core"
           mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp/core
-          done
 
           # List of files to download
           files=(
             "core/ExampleFile.java"
             "core/AnotherFile.java"
             "core/YetAnotherFile.java"
-            "core/analytics/"
+            # Add individual files here instead of directories
           )
 
           # Download each file
           for file in "${files[@]}"; do
-            curl -L -o MyAndroidApp/app/src/main/java/com/example/myandroidapp/$file https://raw.githubusercontent.com/android/nowinandroid/main/$file
+            curl -L -o MyAndroidApp/app/src/main/java/com/example/myandroidapp/$file https://raw.githubusercontent.com/android/nowinandroid/main/$file || echo "Failed to download $file"
             echo "$file downloaded."
           done
 
@@ -122,27 +122,3 @@ jobs:
           gh pr merge --auto --delete-branch --squash "$PR_TITLE" || echo "No pull request to merge. Ensure that you have a PR open and ready."
         env:
           GH_TOKEN: ${{ github.token }}
-
-  commit-changes:
-    name: Commit changes
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Configure Git
-        run: |
-          echo "Configuring Git user"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-
-      - name: Add changes
-        run: |
-          echo "Adding changes"
-          git add MyAndroidApp/
-
-      - name: Commit changes
-        run: |
-          echo "Committing changes"
-          git commit -m "Add files from nowinandroid core" || echo "No changes to commit"
