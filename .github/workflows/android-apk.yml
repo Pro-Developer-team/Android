@@ -47,21 +47,21 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: APKs
-          path: '**/build/outputs/apk/**/*.apk'
+          path: '**/build/apk/**/*.apk'
 
       - name: Upload JVM local results (XML)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: local-test-results
-          path: '**/build/test-results/test*UnitTest/**.xml'
+          path: '**/build/test/**.xml'
 
       - name: Upload lint reports (HTML)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lint-reports
-          path: '**/build/reports/lint-results-*.html'
+          path: '**/build/lint/*.html'
 
   androidTest:
     runs-on: ubuntu-latest
