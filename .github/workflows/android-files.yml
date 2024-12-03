@@ -95,13 +95,17 @@ jobs:
             echo "$file downloaded."
           done
 
+          echo "Configuring Git user"
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
           echo "Push"
           git add .
-          git commit -m "Add files from nowinandroid core"
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           git push origin main
 
       - name: Install GitHub CLI
-        run: sudo apt-get install gh -
+        run: sudo apt-get install gh
         
       - name: Create Pull Request
         run: |
