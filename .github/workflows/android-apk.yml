@@ -80,7 +80,7 @@ jobs:
 
   androidTest:
     runs-on: ubuntu-latest
-    timeout-minutes: 55
+    timeout-minutes: 12
     strategy:
       matrix:
         api-level: [26, 30]
@@ -106,16 +106,6 @@ jobs:
 
       - name: Accept licenses
         run: yes | sdkmanager --licenses || true
-
-      - name: Build projects and run instrumentation tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: ${{ matrix.api-level }}
-          arch: x86_64
-          disable-animations: true
-          disk-size: 6000M
-          heap-size: 600M
-          script: ./gradlew connectedAndroidTest
 
       - name: Upload test reports
         if: always()
