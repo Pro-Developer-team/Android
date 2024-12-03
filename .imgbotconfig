@@ -1,6 +1,6 @@
 {
   "schedule": "daily",
-  "ignoredFiles": ["*.psd"]
+  "ignoredFiles": ["*.jpg"]
   "aggressiveCompression": false,
   "minKBReduced": null
 }
