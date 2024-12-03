@@ -89,13 +89,13 @@ jobs:
       - name: Create Pull Request
         run: |
           PR_TITLE="Automated PR: Update Android project structure"
-          gh pr create --title "$PR_TITLE" --body "This PR was created automatically by GitHub Actions." --base main --head main || echo "No pull request created."
+          gh pr create --title "$PR_TITLE" --body "This PR was created automatically by GitHub Actions." --base main --head main || echo "No pull request created. Please check to make sure you have givin acess to pul requests by typing `pull-requests: write` under `permissions`."
         env:
           GH_TOKEN: ${{ github.token }}
     
       - name: Enable Auto-Merge
         run: |
-          gh pr merge --auto --delete-branch --squash "$PR_TITLE" || echo "No pull request to merge."
+          gh pr merge --auto --delete-branch --squash "$PR_TITLE" || echo "No pull request to merge. Ensure that you have a pr open and ready."
         env:
           GH_TOKEN: ${{ github.token }}
 
