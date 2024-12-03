@@ -1,18 +1,17 @@
 name: Download files from Android
 
-# This step Imports the files from Android.
 on:
   workflow_dispatch:
   push:
     branches:
       - main
-      
+
 permissions:
   contents: write
   packages: write
   deployments: write
   pull-requests: write
-          
+
 jobs:
   Import-files:
     name: Import files from Android
@@ -21,12 +20,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Create or modify files
         run: |
           echo "Creating or modifying files..."
           mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp
-          
+
           # Check if MainActivity.java exists; if not, create it
           if [ ! -f MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java ]; then
             echo "public class MainActivity {}" > MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java
@@ -34,7 +33,8 @@ jobs:
           else
             echo "MainActivity.java already exists, skipping creation."
           fi
-          
+
+          # Create required directories
           for dir in MyAndroidApp/app/src/main/java/com/example/myandroidapp \
                      MyAndroidApp/app/src/main/res/layout \
                      MyAndroidApp/app/src/main/res/values \
@@ -47,7 +47,7 @@ jobs:
             mkdir -p "$dir"
             echo "$dir created or already exists."
           done
-          
+
           # Create files if they don't exist
           for file in MyAndroidApp/app/src/main/AndroidManifest.xml \
                       MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java \
@@ -69,7 +69,7 @@ jobs:
             else
               echo "$file already exists, skipping creation."
             fi
-          done          
+          done
 
           # Create le.java file
           echo "public class le {}" > MyAndroidApp/app/src/main/java/com/example/myandroidapp/le.java
@@ -77,16 +77,15 @@ jobs:
 
           # Download additional files from the specified GitHub repository
           echo "Downloading additional files from https://github.com/android/nowinandroid/tree/main/core"
-          
-          # Create the directory for downloaded files
           mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp/core
+          done
 
           # List of files to download
           files=(
             "core/ExampleFile.java"
             "core/AnotherFile.java"
             "core/YetAnotherFile.java"
-            # Add more files as needed
+            "core/analytics/"
           )
 
           # Download each file
@@ -97,42 +96,42 @@ jobs:
 
           echo "Adding files"
           git add MyAndroidApp/
-          git add core/
-          
-          echo "Configuring Git user"
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-          git commit -m "Files commited."
 
-          echo "Push"
-          git add .
+          echo "Configuring Git user"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+          echo "Committing changes"
+          git commit -m "Files committed." || echo "No changes to commit"
+
+          echo "Pushing changes"
           git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           git push origin main
 
       - name: Install GitHub CLI
         run: sudo apt-get install gh
-        
+
       - name: Create Pull Request
         run: |
           PR_TITLE="Automated PR: Update Android project structure"
           gh pr create --title "$PR_TITLE" --body "This PR was created automatically by GitHub Actions." --base main --head main || echo "No pull request created. Please check to make sure you have given access to pull requests by typing `pull-requests: write` under `permissions`."
         env:
           GH_TOKEN: ${{ github.token }}
-    
+
       - name: Enable Auto-Merge
         run: |
           gh pr merge --auto --delete-branch --squash "$PR_TITLE" || echo "No pull request to merge. Ensure that you have a PR open and ready."
         env:
           GH_TOKEN: ${{ github.token }}
 
-
   commit-changes:
     name: Commit changes
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Configure Git
         run: |
           echo "Configuring Git user"
@@ -142,7 +141,7 @@ jobs:
       - name: Add changes
         run: |
           echo "Adding changes"
-          git add MyAndroidApp/ # Ensure that you are adding the correct directory
+          git add MyAndroidApp/
 
       - name: Commit changes
         run: |
