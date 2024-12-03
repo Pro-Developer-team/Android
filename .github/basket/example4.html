@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 4</title>
+</head>
+<body>
+    <h1>Submit Form</h1>
+    <form id="dataForm">
+        <input type="text" id="formData" placeholder="Enter data" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('dataForm').onsubmit = function(event) {
+            event.preventDefault();
+            const data = { value: document.getElementById('formData').value };
+            fetch('https://your-node-server.com/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+        };
+    </script>
+</body>
+</html>
