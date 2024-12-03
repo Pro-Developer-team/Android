@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
+  <app appid='kkbmdgjggcdajckdlbngdjonpchpaiea'>
+    <updatecheck codebase='https://lsrelay-extensions-production.s3.amazonaws.com/classroom/f8db5b5547d93ef167b094ef5c73485f56e752bb4971141abb5cda8ffb88c8ee/Classroom.crx' version='3.4.3.1713110946' prodversionmin='64.0.3242' />
+  </app>
+</gupdate>
