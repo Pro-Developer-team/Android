@@ -46,7 +46,6 @@ jobs:
                      MyAndroidApp/app/src/main/res/menu; do
             mkdir -p "$dir"
             echo "$dir created or already exists."
-          done
 
           # Create files if they don't exist
           for file in MyAndroidApp/app/src/main/AndroidManifest.xml \
