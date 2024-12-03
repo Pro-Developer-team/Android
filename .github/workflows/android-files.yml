@@ -25,7 +25,7 @@ jobs:
       - name: Create or modify files
         run: |
           echo "Creating or modifying files..."
-          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp
+          mkdir -p 1MyAndroidApp/app/src/main/java/com/example/myandroidapp
           
           # Check if MainActivity.java exists; if not, create it
           if [ ! -f MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java ]; then
