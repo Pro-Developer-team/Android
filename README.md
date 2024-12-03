@@ -7,9 +7,10 @@ This repository contains an Android application designed for testing purposes. I
 - [Overview](#overview)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](https://www.google.com)
+- [More](https://github.com/Coder-boop-web/Android---test/blob/main/more/more-1.text)
+- [Usage](https://github.com/Coder-boop-web/Android---test/tree/main?tab=readme-ov-file#usage)
+- [Contributing](https://github.com/Coder-boop-web/Android---test/blob/main/CONTRIBUTING.md)
+- [License](https://github.com/Coder-boop-web/Android---test/blob/main/LICENSE)
 
 ## Overview
 
@@ -55,4 +56,3 @@ Create a new branch (git checkout -b feature/YourFeature).
 Make your changes and commit them (git commit -m 'Add some feature').
 Push to the branch (git push origin feature/YourFeature).
 Open a pull request.
-License
