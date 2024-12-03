@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 2</title>
+</head>
+<body>
+    <h1>Send Data</h1>
+    <input type="text" id="inputData" placeholder="Enter some data">
+    <button id="sendButton">Send Data</button>
+
+    <script>
+        document.getElementById('sendButton').onclick = function() {
+            const data = { value: document.getElementById('inputData').value };
+            fetch('https://your-node-server.com/api/data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+        };
+    </script>
+</body>
+</html>
