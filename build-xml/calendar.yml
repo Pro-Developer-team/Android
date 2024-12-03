@@ -1,0 +1,18 @@
+<resources>
+    <icon>
+        <path>resources/icons/calendar.ico</path>
+        <description>Calendar Icon</description>
+    </icon>
+    <images>
+        <image>
+            <path>resources/images/calendar_background.png</path>
+            <description>Background for Calendar</description>
+        </image>
+    </images>
+    <fonts>
+        <font>
+            <path>resources/fonts/Arial.ttf</path>
+            <description>Arial Font</description>
+        </font>
+    </fonts>
+</resources>
