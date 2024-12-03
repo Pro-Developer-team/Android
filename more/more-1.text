@@ -1,0 +1,38 @@
+# Contributing to the Android Test Project
+
+Thank you for considering contributing to the Android Test Project! We welcome contributions from the community to improve the project and make it more useful for everyone. Please follow the guidelines below to ensure a smooth contribution process.
+
+## How to Contribute
+
+### 1. Fork the Repository
+
+Start by forking the repository to your own GitHub account. This will create a copy of the project that you can modify.
+
+### 2. Create a New Branch
+
+Create a new branch for your feature or bug fix. It’s a good practice to name your branch descriptively. For example:
+
+```sh
+git checkout -b feature/YourFeatureName
+3. Make Your Changes
+Make the necessary changes to the codebase. Be sure to follow the existing coding style and conventions used in the project. If you are adding new features, consider adding tests to ensure the new functionality works as expected.
+
+4. Test Your Changes
+Before submitting your changes, make sure to test them thoroughly. Run the application and ensure that everything is functioning as expected. If you’ve added or modified tests, run those as well to verify their correctness.
+
+5. Commit Your Changes
+Once you are satisfied with your changes, commit them with a clear and descriptive commit message. For example:
+`git commit -m "Add feature to improve user authentication"`
+
+6. Push to Your Fork
+Push your changes to your forked repository:
+`git push origin feature/YourFeatureName`
+
+7. Open a Pull Request
+Navigate to the original repository and open a pull request. Provide a clear description of the changes you’ve made, including any relevant details or context. This helps the maintainers understand your contribution and its purpose.
+
+Code of Conduct
+By participating in this project, you agree to abide by our Code of Conduct. Please be respectful and considerate to all contributors and maintainers.
+
+Questions?
+If you have any questions or need further clarification on how to contribute, feel free to reach out by opening an issue in the repository or contacting the maintainers directly.
