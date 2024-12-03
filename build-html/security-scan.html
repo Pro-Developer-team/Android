@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Scan Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #fff; padding: 20px; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .vulnerability { color: #F44336; }
+    </style>
+</head>
+<body>
+
+    <h1>Security Scan Report</h1>
+
+    <h2>Vulnerabilities Found</h2>
+    <table>
+        <tr>
+            <th>Vulnerability</th>
+            <th>Severity</th>
+            <th>File</th>
+        </tr>
+        <tr>
+            <td class="vulnerability">SQL Injection</td>
+            <td>High</td>
+            <td>database.js</td>
+        </tr>
+        <tr>
+            <td class="vulnerability">Cross-Site Scripting</td>
+            <td>Medium</td>
+            <td>index.html</td>
+        </tr>
+    </table>
+
+</body>
+</html>
