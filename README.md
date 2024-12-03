@@ -1,0 +1,1 @@
+# This repository contains simple HTML examples demonstrating how to connect to a Node.js backend for data fetching, sending, and real-time communication. Each example highlights different functionalities. Users can set up a Node.js server, update URLs, and deploy on GitHub Pages. Licensed under the MIT License.
