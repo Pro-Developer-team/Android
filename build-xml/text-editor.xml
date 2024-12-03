@@ -1,0 +1,18 @@
+<resources>
+    <icon>
+        <path>resources/icons/text_editor.ico</path>
+        <description>Text Editor Icon</description>
+    </icon>
+    <images>
+        <image>
+            <path>resources/images/new_file.png</path>
+            <description>New File Icon</description>
+        </image>
+    </images>
+    <fonts>
+        <font>
+            <path>resources/fonts/Monaco.ttf</path>
+            <description>Monaco Font</description>
+        </font>
+    </fonts>
+</resources>
