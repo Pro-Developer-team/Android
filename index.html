@@ -1,1 +1,137 @@
-wefvfvwfgdfgd
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Test Project</title>
+    <link rel="icon" href="https://i.ibb.co/KW8NVz7/default.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"> <!-- AOS Library -->
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdf6e3; /* Warm background color */
+            color: #333; /* Darker text color */
+        }
+        .nav {
+            display: flex;
+            background-color: #ffcc99; /* Warm header color */
+            padding: 10px;
+            justify-content: center;
+        }
+        .nav button {
+            background: none;
+            border: none;
+            color: #333;
+            font-weight: bold;
+            margin: 0 15px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .nav button:hover {
+            color: #cc6600; /* Darker orange on hover */
+        }
+        .index-img-header {
+            width: 100%;
+            height: auto;
+        }
+        .welcome {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #ffebcc; /* Light warm background for home */
+            border-radius: 8px;
+            margin: 20px auto;
+        }
+        .wide-box {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 8px;
+            max-width: 800px;
+        }
+        .faq {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .faq-box {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #cc6600;
+            border-radius: 8px;
+            background-color: #ffe6cc; /* Light warm background */
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #ffcc99; /* Same warm color as header */
+            color: #333;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Start -->
+    <div class="nav">
+        <button onclick="window.location.href='index.html'">Home</button>
+        <button onclick="window.location.href='contact.html'">Contact</button>
+        <button onclick="window.location.href='apps.html'">Apps</button>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Header Image -->
+    <img src="img/header.png" alt="Image couldn't load." class="index-img-header">
+
+    <!-- Welcome Section -->
+    <div class="welcome">
+        <h2>Welcome to the Android Test Project</h2>
+        <p>Your go-to resource for automated testing in Android applications.</p>
+    </div>
+
+    <!-- Notice Box -->
+    <div class="wide-box">
+        <h2>Welcome to a little Android project.</h2>
+        <p>This site is dedicated to providing a comprehensive suite of automated tests for Android applications. Our goal is to enhance code quality, ensuring that every feature functions correctly through rigorous testing methodologies.</p>
+        <p>Special thanks to the dev team, chris, noah, santiago, grpret, ishuantia, heyzeus, Ashly, Ajay, and Cam.</p>
+    </div>
+
+    <!-- Frequently Asked Questions -->
+    <center class="faq">
+        <p class="popular-games-title">FAQ:</p>
+        <div class="faq-box">
+            <p class="faq-title"><i class="fas fa-question-circle"></i> Question:</p>
+            <p class="faq-qna">What does your  project do? What is it used for?</p>
+            <p class="faq-title "><i class="fas fa-check-circle"></i> Answer:</p>
+            <p class="faq-qna">Our project consists of a variety of Android apps that can be accessed with a quick installation step. Applications deployed on Android are primarily used to support the apps that are being sent to developers. Our goal is to encourage other developers to collaborate with us on our work.</p>
+        </div>
+        <div class="faq-box">
+            <p class="faq-title"><i class="fas fa-question-circle"></i> Question:</p>
+            <p class="faq-qna">Can you add ______ application?</p>
+            <p class="faq-title"><i class="fas fa-check-circle"></i> Answer:</p>
+            <p class="faq-qna">If you have a app that you want us to deploy it, please use our <a href="contact.html">contact form</a> to reach us.</p>
+        </div>
+    </center>
+
+    <!-- Footer Start -->
+    <footer>
+        <div class="footer-about">
+            <p>Welcome to the Android Test Project, where we strive to enhance your experience!</p>
+        </div>
+        <p>&copy; 2023 Conrad Dylan. All rights reserved.</p>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
