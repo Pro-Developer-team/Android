@@ -1,4 +1,4 @@
-name: Step 0, Welcome
+name: Download files from Android
 
 # This step Imports the files from Android.
 on:
@@ -98,6 +98,9 @@ jobs:
           echo "Configuring Git user"
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git commit -m "Files commited."
 
           echo "Push"
           git add .
