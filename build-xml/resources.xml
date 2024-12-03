@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!-- Application Icon -->
+    <icon>
+        <path>resources/icons/app_icon.ico</path>
+        <description>Main application icon</description>
+    </icon>
+
+    <!-- Application Splash Screen -->
+    <splashScreen>
+        <path>resources/images/splash_screen.png</path>
+        <description>Application splash screen image</description>
+    </splashScreen>
+
+    <!-- Application Images -->
+    <images>
+        <image>
+            <path>resources/images/logo.png</path>
+            <description>Application logo</description>
+        </image>
+        <image>
+            <path>resources/images/background.jpg</path>
+            <description>Background image for main window</description>
+        </image>
+    </images>
+
+    <!-- Fonts -->
+    <fonts>
+        <font>
+            <path>resources/fonts/Roboto-Regular.ttf</path>
+            <description>Regular Roboto font</description>
+        </font>
+        <font>
+            <path>resources/fonts/Roboto-Bold.ttf</path>
+            <description>Bold Roboto font</description>
+        </font>
+    </fonts>
+
+    <!-- Sounds -->
+    <sounds>
+        <sound>
+            <path>resources/sounds/click.wav</path>
+            <description>Click sound effect</description>
+        </sound>
+        <sound>
+            <path>resources/sounds/notification.mp3</path>
+            <description>Notification sound</description>
+        </sound>
+    </sounds>
+
+    <!-- Other Resources -->
+    <otherResources>
+        <resource>
+            <path>resources/data/config.json</path>
+            <description>Configuration file for the application</description>
+        </resource>
+    </otherResources>
+</resources>
