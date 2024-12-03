@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Timeline</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        h1 { color: #333; }
+        .timeline { list-style-type: none; padding: 0; }
+        .timeline-item { margin: 20px 0; padding: 10px; background: #fff; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .status { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Build Timeline</h1>
+
+    <ul class="timeline">
+        <li class="timeline-item">
+            <p><strong>Build #125</strong></p>
+            <p class="status success">Status: Success</p>
+            <p>Time: 2023-10-02 09:00 AM</p>
+        </li>
+        <li class="timeline-item">
+            <p><strong>Build #124</strong></p>
+            <p class="status failure">Status: Failed</p>
+            <p>Time: 2023-10-01 05:00 PM</p>
+        </li>
+        <li class="timeline-item">
+            <p><strong>Build #123</strong></p>
+            <p class="status success">Status: Success</p>
+            <p>Time: 2023-09-30 10:00 AM</p>
+        </li>
+    </ul>
+
+</body>
+</html>
