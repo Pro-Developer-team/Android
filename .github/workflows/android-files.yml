@@ -25,7 +25,7 @@ jobs:
       - name: Create or modify files
         run: |
           echo "Creating or modifying files..."
-          mkdir -p 1MyAndroidApp/app/src/main/java/com/example/myandroidapp
+          mkdir -p MyAndroidApp/app/src/main/java/com/example/myandroidapp
           
           # Check if MainActivity.java exists; if not, create it
           if [ ! -f MyAndroidApp/app/src/main/java/com/example/myandroidapp/MainActivity.java ]; then
@@ -71,16 +71,26 @@ jobs:
             fi
           done          
 
+          # Download additional files from the specified GitHub repository
+          echo "Downloading additional files from https://github.com/android/nowinandroid/tree/main/core"
+          
+          # List of files to download
+          files=(
+            "core/ExampleFile.java"
+            "core/AnotherFile.java"
+            "core/YetAnotherFile.java"
+            # Add more files as needed
+          )
+
+          # Download each file
+          for file in "${files[@]}"; do
+            curl -L -o MyAndroidApp/app/src/main/java/com/example/myandroidapp/$file https://raw.githubusercontent.com/android/nowinandroid/main/$file
+            echo "$file downloaded."
+          done
+
           echo "Push"
-          git push --set-upstream origin $BRANCH
-
-          echo "Restore main"
-          git checkout main
-
-          echo "Merge the new branch into main"
-          git merge $BRANCH
-
-          echo "Push the merged changes to main"
+          git add .
+          git commit -m "Add files from nowinandroid core"
           git push origin main
 
       - name: Install GitHub CLI
@@ -89,17 +99,12 @@ jobs:
       - name: Create Pull Request
         run: |
           PR_TITLE="Automated PR: Update Android project structure"
-          gh pr create --title "$PR_TITLE" --body "This PR was created automatically by GitHub Actions." --base main --head main || echo "No pull request created. Please check to make sure you have givin acess to pul requests by typing `pull-requests: write` under `permissions`."
+          gh pr create --title "$PR_TITLE" --body "This PR was created automatically by GitHub Actions." --base main --head main || echo "No pull request created. Please check to make sure you have given access to pull requests by typing `pull-requests: write` under `permissions`."
         env:
           GH_TOKEN: ${{ github.token }}
     
       - name: Enable Auto-Merge
         run: |
-          gh pr merge --auto --delete-branch --squash "$PR_TITLE" || echo "No pull request to merge. Ensure that you have a pr open and ready."
+          gh pr merge --auto --delete-branch --squash "$PR_TITLE" || echo "No pull request to merge. Ensure that you have a PR open and ready."
         env:
           GH_TOKEN: ${{ github.token }}
-
-
-
-
-      
