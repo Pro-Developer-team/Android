@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI Summary Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #e9ecef; padding: 20px; }
+        h1 { color: #343a40; }
+        .summary { display: flex; justify-content: space-around; margin-top: 20px; }
+        .box { background: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .success { color: #4CAF50; }
+        .failure { color: #F44336; }
+    </style>
+</head>
+<body>
+
+    <h1>CI Summary Dashboard</h1>
+
+    <div class="summary">
+        <div class="box">
+            <h2>Build Status</h2>
+            <p class="success">Last Build: Success</p>
+        </div>
+        <div class="box">
+            <h2>Tests</h2>
+            <p>Passed: 10</p>
+            <p class="failure">Failed: 2</p>
+        </div>
+        <div class="box">
+            <h2>Deployment</h2>
+            <p class="success">Last Deployment: Successful</p>
+        </div>
+    </div>
+
+</body>
+</html>
