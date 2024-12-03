@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Overview</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }
+        h1 { color: #333; }
+        .status { padding: 10px; border-radius: 5px; color: #fff; }
+        .success { background-color: #4CAF50; }
+        .failure { background-color: #F44336; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+    <h1>Build Overview</h1>
+    <div class="status success">Build Status: <strong>Success</strong></div>
+
+    <h2>Recent Builds</h2>
+    <table>
+        <tr>
+            <th>Build Number</th>
+            <th>Time</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>124</td>
+            <td>10:00 AM</td>
+            <td class="success">Success</td>
+        </tr>
+        <tr>
+            <td>123</td>
+            <td>09:45 AM</td>
+            <td class="failure">Failed</td>
+        </tr>
+    </table>
+
+</body>
+</html>
