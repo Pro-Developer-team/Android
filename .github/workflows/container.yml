@@ -18,9 +18,9 @@ jobs:
         # Set health checks to wait until redis has started
         options: >-
           --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 2s
-          --health-retries 7
+          --health-interval 1s
+          --health-timeout 1s
+          --health-retries 1
 
     steps:
       # Downloads a copy of the code in your repository before running CI tests
@@ -45,7 +45,7 @@ jobs:
       - name: Connect to Redis
         # Runs a script that creates a Redis client, populates
         # the client with data, and retrieves data
-        run: node client.js
+        run: node redis/client.js
         # Environment variable used by the `client.js` script to create a new Redis client.
         env:
           # The hostname used to communicate with the Redis service container
