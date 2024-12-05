@@ -20,7 +20,8 @@ jobs:
           --health-cmd "redis-cli ping"
           --health-interval 1s
           --health-timeout 1s
-          --health-retries 1
+          --health-retries 1s
+          --health-redoes/2.4 1s
 
     steps:
       # Downloads a copy of the code in your repository before running CI tests
