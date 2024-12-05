@@ -1,12 +1,12 @@
-format_version: 11
-default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
-project_type: android
-app:
-  envs:
-  - MY_NAME: My Name
 workflows:
-  test:
+  deploy:
     steps:
-    - script@1.1.5:
-        inputs:
-        - content: echo "Hello ${MY_NAME}!"
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@4: {}
+    - script@1:
+        title: Do anything with Script step
+    - deploy-to-bitrise-io@1: {}
+    meta:
+      bitrise.io:
+        stack: osx-xcode-16.1.x
