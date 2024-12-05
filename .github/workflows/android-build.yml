@@ -42,37 +42,107 @@ jobs:
 
       - name: Accept licenses
         run: yes | sdkmanager --licenses || true
+          
+  XML-build:
+    name: "Build XML files"
+    runs-on: ubuntu-latest
 
-      - name: Upload build outputs (APKs)
+    permissions:
+      contents: write
+      pull-requests: write
+
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build XML files
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: APKs
+          name: Build XML
+          path: 'build-xml/'
+          
+  APK-build:
+    name: "Build APK files"
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build APK files
+        uses: actions/upload-artifact@v4
+        with:
+          name: Build APK
           path: 'build-apk/'
 
-      - name: Upload JVM local results (XML)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: local-test-results
-          path: 'build-xml/'
+  HTML-build:
+    name: "Build HTML files"
+    runs-on: ubuntu-latest
 
-      - name: Build Html files (HTML)
+    permissions:
+      contents: write
+      pull-requests: write
+
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build HTML files
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: lint-reports
+          name: Build HTML
           path: 'build-html/'
-          
-      - name: Build text files (TXT)
+
+  TEXT-build:
+    name: "Build TEXT files"
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build TEXT files
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: build text files
+          name: Build TEXT
           path: 'build-text/'
-          
-      - name: Test Java files (JAVA)
+
+  JAVA-test:
+    name: "Test JAVA files"
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Test JAVA files
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Test java files
+          name: Build JAVA
           path: 'test-java/'
