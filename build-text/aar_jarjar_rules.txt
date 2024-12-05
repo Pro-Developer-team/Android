@@ -1,0 +1,2 @@
+rule com.google.protobuf.** androidx.test.espresso.remote.internal.deps.protobuf.@1
+
