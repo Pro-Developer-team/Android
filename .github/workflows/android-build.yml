@@ -1,0 +1,78 @@
+name: Build --files
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test_and_apk:
+    name: "Local tests and APKs"
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          validate-wrappers: true
+          gradle-home-cache-cleanup: true
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Accept licenses
+        run: yes | sdkmanager --licenses || true
+
+      - name: Upload build outputs (APKs)
+        uses: actions/upload-artifact@v4
+        with:
+          name: APKs
+          path: 'build-apk/'
+
+      - name: Upload JVM local results (XML)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-test-results
+          path: 'build-xml/'
+
+      - name: Build Html files (HTML)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-reports
+          path: 'build-html/'
+          
+      - name: Build text files (TXT)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build text files
+          path: 'build-text/'
+          
+      - name: Test Java files (JAVA)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test java files
+          path: 'test-java/'
