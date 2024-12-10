@@ -1,5 +1,5 @@
 #
-name: Demo Push
+name: Demo Push 3
 
 # This workflow runs when any of the following occur:
 # - A push is made to a branch called `main` or `seed`
@@ -15,7 +15,7 @@ on:
   pull_request:
   # This creates an environment variable called `IMAGE_NAME ` with the value `ghtoken_product_demo`.
 env:
-  IMAGE_NAME: container_package_3
+  IMAGE_NAME: android_package_3
 #
 jobs:
   # This pushes the image to GitHub Packages.
