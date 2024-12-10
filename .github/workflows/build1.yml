@@ -9,9 +9,6 @@ on:
   push:
     branches:
       - main
-      - seed
-    tags:
-      - v*
   pull_request:
   # This creates an environment variable called `IMAGE_NAME ` with the value `ghtoken_product_demo`.
 env:
@@ -20,7 +17,6 @@ env:
 jobs:
   build:
       runs-on: ububtu-latest
-      
       steps:
       - uses: actions/checkout@v3
   
