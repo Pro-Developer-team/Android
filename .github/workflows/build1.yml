@@ -1,19 +1,9 @@
 #
-name: Demo Push
-
-# This workflow runs when any of the following occur:
-# - A push is made to a branch called `main` or `seed`
-# - A tag starting with "v" is created
-# - A pull request is created or updated
+name: Example workflow
 on:
   push:
     branches:
       - main
-  pull_request:
-  # This creates an environment variable called `IMAGE_NAME ` with the value `ghtoken_product_demo`.
-env:
-  IMAGE_NAME: android_package_1
-#
 jobs:
   build:
       runs-on: ububtu-latest
