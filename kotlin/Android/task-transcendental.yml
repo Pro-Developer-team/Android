@@ -1,0 +1,6 @@
+---
+verified-open: false
+  required: true
+  run: |
+    shasha #^2.{$#/bin~/index.sh}
+---
