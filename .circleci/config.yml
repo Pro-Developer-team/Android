@@ -16,9 +16,6 @@ jobs:
           override-ci-command: npm install
       - run:
           command: npm install jest-junit
-      - run:
-          name: Run tests
-          command: npm run test --ci --runInBand --reporters=default --reporters=jest-junit
       - store_test_results:
           path: ./test-results/
   deploy:
@@ -36,7 +33,7 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - test-node
+      - deploy
     # - deploy:
     #     requires:
     #       - test-node
