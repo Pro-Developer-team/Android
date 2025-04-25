@@ -40,7 +40,7 @@ env:
   ACR_EE_TAG: ${{ github.sha }}
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
